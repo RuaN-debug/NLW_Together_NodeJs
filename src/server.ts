@@ -1,13 +1,13 @@
+import { router } from "./routes";
 import express from "express";
+import "reflect-metadata"; // ORM
+import "./database"; // Imports the index file
 
 const app = express();
 
-app.get("/test-get", (request, response) => {
-    return response.send("Olá get");
-});
+app.use(express.json());
+app.use(router);
 
-app.post("/test-post", (request, response) => {
-    return response.send("Olá post");
+app.listen(3000, () => {
+	console.log("Server is running!");
 });
-
-app.listen(3000, () => {console.log("Server is running!")})
